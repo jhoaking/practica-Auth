@@ -1,6 +1,6 @@
 import { registerUserType } from "schema/authSchema";
 import { connect } from "../db";
-import { AuthType, Roles } from "types/authTypes";
+import { AuthType } from "types/authTypes";
 import { controlRolAuth } from "./controlRol";
 import { utilAuth } from "utils/authUtils";
 import { QueryResult } from "pg";
