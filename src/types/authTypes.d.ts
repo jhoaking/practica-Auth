@@ -1,4 +1,4 @@
-enum Roles {"usuario" , "admin"}
+export type Roles = "usuario" | "admin";
 
 export interface AuthType {
   user_id: number;
@@ -7,6 +7,8 @@ export interface AuthType {
   password: string;
   createAt: Date;
   ubication: string;
-  rol : Roles
+  rol: Roles;
+  tecnologies: string[];
 }
 
+export type RegisterType = Omit<AuthType, "user_id" | "createAt">;
