@@ -25,7 +25,7 @@ export class authController {
           isAdmin
         );
 
-        //await sendEmail(user.email, user.name);
+        await sendEmail(user.email, user.name);
         res.status(201).json({
           message: "Usuario registrado exitosamente",
           bienvenida: `Bienvenido ${user.name}!!`,
@@ -53,7 +53,8 @@ export class authController {
         .cookie("access_token", token, options)
         .json({
           message: "El usuario inició sesión con éxito!",
-          bienvenida: `Bienvenido!! ${vali.email}`,token,
+          bienvenida: `Bienvenido!! ${vali.email}`,
+          token,
         });
     }
   );
@@ -78,14 +79,16 @@ export class authController {
       res.status(200).send({ message: "Sesión cerrada correctamente" });
     }
   );
-  lookAllData = catchAsync(async (req: Request, res: Response, _next: NextFunction) => {
-    const user = req.user as AuthType | undefined;
-     console.log("🔥 Usuario en /auth/data:", user);
-    if (!user || !user.user_id) {
-     res.status(401).json({ message: "Usuario no autorizado" });
-     return
-  }
-    const result = await this.model.verData(user.user_id);
-    res.status(200).json({ data: result });
-  })
+  lookAllData = catchAsync(
+    async (req: Request, res: Response, _next: NextFunction) => {
+      const user = req.user as AuthType | undefined;
+      console.log("🔥 Usuario en /auth/data:", user);
+      if (!user || !user.user_id) {
+        res.status(401).json({ message: "Usuario no autorizado" });
+        return;
+      }
+      const result = await this.model.verData(user.user_id);
+      res.status(200).json({ data: result });
+    }
+  );
 }

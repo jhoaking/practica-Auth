@@ -61,7 +61,6 @@ export class authClass {
   }
 
   async lookAllUser(user: number) {
-    console.log("🧠 Consultando con user_id:", user);
 
     const query = `SELECT 
   u.name,
