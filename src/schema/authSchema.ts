@@ -35,7 +35,9 @@ export const validateLogin = (input: unknown): LoginType => {
 export const validateRegister = (input: unknown): registerUserType => {
   const result = registerSchema.safeParse(input);
 
+
   if (!result.success) {
+     console.error("❌ Error en validación Zod:", result.error);
     throw result.error;
   }
 

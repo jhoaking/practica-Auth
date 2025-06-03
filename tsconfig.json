@@ -33,13 +33,13 @@
     "paths": {
       "config": ["config.ts"],
       "controller/*": ["controller/*"],
-      "middlewares/*": ["middlewares/*"],
+      "middleware/*": ["middleware/*"],
       "routes/*": ["routes/*"],
       "schema/*":["schema/*"],
-      "services/*" : ["services/*"],
+      "service/*" : ["service/*"],
       "model/*" : ["model/*"],
       "utils/*" : ["utils/*"],
-      "error/*" : ["error/*"]
+      "app" : ["app.ts"]
     }
   
   },

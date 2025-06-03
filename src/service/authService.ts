@@ -10,7 +10,7 @@ export class AuthService {
     if (foundEmail) {
       throw new Error("este email ya fue registrado");
     }
-
+    
     const user = await this.model.registerAuth(
       {
         name: data.name,
@@ -47,5 +47,9 @@ export class AuthService {
     };
     const token = utilAuth.createToken(payload);
     return token;
+  }
+  async verData (user : number){
+    const users = await this.model.lookAllUser(user);
+    return users;
   }
 }
